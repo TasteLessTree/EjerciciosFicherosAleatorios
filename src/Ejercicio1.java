@@ -56,7 +56,7 @@ public class Ejercicio1 {
     }
 
     public static void reemplazarDoses(File fichero, int num) {
-        int id = 5; // Sabemos que hay 6 unos y que el índice empieza en 0
+        int id = 6; // Sabemos que hay 6 unos y que el índice empieza en 0. Asi que el primer 2 debe ser el sexto elemento
         long posicion = (id - 1) * 4L;
 
         try (RandomAccessFile file = new RandomAccessFile(fichero, "rw")) {
