@@ -3,6 +3,9 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
 
+/** @author AndrésPérezM
+ * */
+
 public class Ejercicio1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
