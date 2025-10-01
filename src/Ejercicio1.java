@@ -9,7 +9,11 @@ public class Ejercicio1 {
 
         File fichero = new File("data/enteros.dat");
 
-        //escribirNumeros(fichero);
+        if (fichero.delete()) {
+            System.out.println("Fichero eliminado");
+        }
+
+        escribirNumeros(fichero);
         mostrarNumeros(fichero);
 
         System.out.println("Introduce un valor entre 0 y 9 (ambos incluidos) para reemplazar los 2s");
@@ -52,20 +56,14 @@ public class Ejercicio1 {
     }
 
     public static void reemplazarDoses(File fichero, int num) {
-        int id = 7; // Sabemos que hay 6 unos, el primer 2 tiene posición 7
-        long posicion = 0;
+        int id = 5; // Sabemos que hay 6 unos y que el índice empieza en 0
+        long posicion = (id - 1) * 4L;
+
         try (RandomAccessFile file = new RandomAccessFile(fichero, "rw")) {
             while (file.getFilePointer() < file.length()) {
-                posicion = (id - 1) * 4L;
                 posicion += 4; // Tamaño de un int
                 file.seek(posicion);
-                int valor = file.readInt();
-
-                if (valor == 2) {
-                    file.writeInt(num);
-                }
-
-                id++;
+                file.writeInt(num);
             }
         } catch (IOException e)  {
             throw new RuntimeException(e);
