@@ -12,10 +12,6 @@ public class Ejercicio3 {
 
         File fichero = new File("data/juegos.dat");
 
-        /*if (fichero.delete()) {
-            System.out.println("Fichero eliminado");
-        }*/
-
         System.out.println("¿Cuál es el identificador del juego?");
         System.out.print(">> ");
         int id = sc.nextInt();
@@ -88,12 +84,11 @@ public class Ejercicio3 {
                 String clasif = new String(clasificacion);
 
                 System.out.println("Número de orden: " + id + ". Título: " + titulo + ". Edad mínima: " + edad + ". Claficiación: " + clasif);
-                posicion += 28;
+                posicion += 48; // 20 por cada string, 4 por cada entero
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("\n===== [" + fichero.getName() + "] =====");
         System.out.println();
     }
 }
