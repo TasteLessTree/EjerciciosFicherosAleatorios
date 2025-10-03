@@ -50,7 +50,7 @@ public class Ejercicio4 {
                 String titulo = new String(nombre);
                 String clasif = new String(clasificacion);
 
-                if (titulo.trim().equals(tematica.trim()) && edadFile == edad) {
+                if (edadFile == edad && tematica.trim().equals(clasif.trim())) {
                     System.out.println("Número de orden: " + id + ". Título: " + titulo + ". Edad mínima: " + edad + ". Claficiación: " + clasif);
                 }
 
