@@ -14,8 +14,7 @@ public class Ejercicio6 {
             System.out.println("Precio.dat eliminado");
         }
 
-        double precioPorClase = 45.7;
-        pagarLasClases(practicas, precio, precioPorClase);
+        pagarLasClases(practicas, precio, 45.7);
         mostrarPagos(precio);
     }
 
@@ -51,10 +50,9 @@ public class Ejercicio6 {
                 String nombreAlumno = new String(nombre);
                 String DNIAlumno = new String(DNI);
                 String numeroPractAlumno = new String(numero);
-
                 escribirPrecio(precio, nombreAlumno, DNIAlumno, numeroPractAlumno, precioPorClase);
 
-                posicionPracticas += 46; // 20 por 10 chars + 18 por 9 chars + 8 por double
+                posicionPracticas += 116; // 20 por 10 chars + 70 por 35 chars + 18 por 9 chars + 4 por 2 chars + 4 por 2 chars
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -62,21 +60,35 @@ public class Ejercicio6 {
     }
 
     public static void mostrarPagos(File precio) {
+        char[] nombreAlumno = new char[10];
+        char[] DNI = new char[9];
+        char[] numero = new char[2];
+
         try (RandomAccessFile file = new RandomAccessFile(precio, "r")) {
             long posicion = 0;
 
             while (file.getFilePointer() < file.length()) {
                 file.seek(posicion);
 
-                String nombre = file.readUTF();
-                String dni = file.readUTF();
-                String cantidadClases = file.readUTF();
+                for (int i = 0; i < nombreAlumno.length; i++) {
+                    nombreAlumno[i] = file.readChar();
+                }
+                for (int i = 0; i < DNI.length; i++) {
+                    DNI[i] = file.readChar();
+                }
+                for (int i = 0; i < numero.length; i++) {
+                    numero[i] = file.readChar();
+                }
+
+                String nombre = new String(nombreAlumno);
+                String dni = new String(DNI);
+                String cantidadClases = new String(numero);
                 double precioTotal = file.readDouble();
 
                 System.out.println("Nombre: " + nombre + ". DNI: " + dni +
                         ". Número de prácticas: " + cantidadClases + ". Precio a pagar: " + precioTotal);
 
-                posicion += 46; // 20 por 10 chars + 18 por 9 chars + 8 por double
+                posicion += 50; // 20 por 10 chars + 18 por 9 chars + 4 por 2 chars + 8 por double
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -87,11 +99,12 @@ public class Ejercicio6 {
         try (RandomAccessFile file = new RandomAccessFile(fichero, "rw")) {
             long posicionPrecio = file.length();
             file.seek(posicionPrecio);
-
-            file.writeUTF(nombre);
-            file.writeUTF(dni);
-            file.writeUTF(cantidadClases);
-            file.writeDouble(precio * Double.parseDouble(cantidadClases));
+            file.writeChars(nombre);
+            file.writeChars(dni);
+            file.writeChars(cantidadClases);
+            double clases = Double.parseDouble(cantidadClases);
+            double total = precio * clases;
+            file.writeDouble(total);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
