@@ -31,7 +31,7 @@ public class Ejercicio3 {
         String clasificacion = sc.nextLine();
 
         anyadirJuego(fichero, id, nombre, edad, clasificacion);
-        mostrarNumeros(fichero);
+        mostrarJuegos(fichero);
     }
 
     public static void anyadirJuego(File fichero, int id, String nombre, int edad, String clasificacion) {
@@ -55,7 +55,7 @@ public class Ejercicio3 {
         }
     }
 
-    public static void mostrarNumeros(File fichero) {
+    public static void mostrarJuegos(File fichero) {
         System.out.println("===== [" + fichero.getName() + "] =====");
 
         long posicion = 0;
