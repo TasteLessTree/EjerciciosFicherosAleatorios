@@ -81,7 +81,7 @@ public class Ejercicio5 {
                 vehiculo = new String(arr);
             }
 
-            System.out.print("Ingrese el número de prácticas: ");
+            System.out.print("Ingrese el número de clases: ");
             String numero = sc.nextLine();
 
             if (numero.length() > 2) {
@@ -168,7 +168,7 @@ public class Ejercicio5 {
                 String numeroPractAlumno = new String(numero);
 
                 System.out.println("Nombre: " + nombreAlumno + ". Apellidos: " + apellidosAlumno + ". DNI: " + DNIAlumno +
-                        ". Vehículo prácticas: " + vehiculoPracticas + ". Número de prácticas: " + numeroPractAlumno);
+                        ". Vehículo prácticas: " + vehiculoPracticas + ". Número de clases: " + numeroPractAlumno);
 
                 posicion += 116; // 20 por 10 chars + 70 por 35 chars + 18 por 9 chars + 4 por 2 chars + 4 por 2 chars
             }

@@ -17,7 +17,7 @@ public class Ejercicio7 {
             System.out.println("Fichero eliminado");
         }
 
-        System.out.println("¿Cuanto descuento quieres aplicar?");
+        System.out.println("¿Cuanto X por ciento de descuento quieres aplicar?");
         System.out.print(">> ");
         int porcentaje = sc.nextInt();
 
@@ -97,7 +97,7 @@ public class Ejercicio7 {
                 precioAntiguo = file.readDouble();
                 precioActual = file.readDouble();
 
-                System.out.println(". DNI: " + dni + ". Precio antiguo: " + precioAntiguo + ". Precio con descuento: " + precioActual);
+                System.out.println("DNI: " + dni + ". Precio antiguo: " + precioAntiguo + ". Precio con descuento: " + precioActual);
 
                 posicion += 34; // 18 por 9 chars + 16 por 2 double
             }

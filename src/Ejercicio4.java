@@ -16,14 +16,10 @@ public class Ejercicio4 {
         System.out.print(">> ");
         int edad = sc.nextInt();
 
-        System.out.println("¿Cuál es la temática del juego?");
-        System.out.print(">> ");
-        String tematica = sc.next();
-
-        recomendarJuegos(fichero, edad, tematica);
+        recomendarJuegos(fichero, edad);
     }
 
-    public static void recomendarJuegos(File fichero, int edad, String tematica) {
+    public static void recomendarJuegos(File fichero, int edad) {
         long posicion = 0;
 
         int id;
@@ -50,8 +46,8 @@ public class Ejercicio4 {
                 String titulo = new String(nombre);
                 String clasif = new String(clasificacion);
 
-                if (edadFile == edad && tematica.trim().equals(clasif.trim())) {
-                    System.out.println("Número de orden: " + id + ". Título: " + titulo + ". Edad mínima: " + edad + ". Claficiación: " + clasif);
+                if (edadFile >= edad) {
+                    System.out.println("Número de orden: " + id + ". Título: " + titulo + ". Edad mínima: " + edadFile + ". Claficiación: " + clasif);
                 }
 
                 posicion += 48; // 20 por cada string, 4 por cada entero

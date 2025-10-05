@@ -103,7 +103,7 @@ public class Ejercicio6 {
             file.writeChars(dni);
             file.writeChars(cantidadClases);
             double clases = Double.parseDouble(cantidadClases);
-            double total = precio * clases;
+            double total = Math.round(precio * clases);
             file.writeDouble(total);
         } catch (IOException e) {
             throw new RuntimeException(e);
